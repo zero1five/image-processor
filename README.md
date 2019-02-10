@@ -1,2 +1,2 @@
 # Image-Processor
-> check your javascript object is charming.
+> Handling your image files in ReactJS.
