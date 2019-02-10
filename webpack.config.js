@@ -4,7 +4,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const appDirectory = fs.realpathSync(process.cwd());
@@ -45,15 +44,13 @@ module.exports = {
     rules: [
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
-        use: 'happypack/loader?id=JSLoader',
-        include: paths.appSrc,
+        use: 'babel-loader',
+        include: paths.appRoot,
         exclude: /node_modules/,
       },
       {
-        test: /\.less$/,
-        use: ExtractTextWebpackPlugin.extract({
-          use: ['css-loader', 'less-loader'],
-        }),
+        test: /\.(css)$/,
+        loader: 'style-loader!css-loader',
       },
     ],
   },
@@ -82,6 +79,5 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new ExtractTextWebpackPlugin('css/style.css'),
   ],
 };
