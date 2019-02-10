@@ -1,7 +1,7 @@
 {
   "name": "image-processor",
   "version": "0.0.1",
-  "description": "Handling your image files in web frameworks.",
+  "description": "Handling your image files for ReactJS.",
   "main": "lib/cjs/index.js",
   "directories": {
     "doc": "docs",

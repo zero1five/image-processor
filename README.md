@@ -1,2 +1,2 @@
 # Image-Processor
-> Handling your image files in ReactJS.
+> Handling your image files for ReactJS.
