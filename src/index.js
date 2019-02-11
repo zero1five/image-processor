@@ -3,7 +3,6 @@ import './style/index.css';
 
 /**
  * 点击加号添加图片到对应的canvas渲染区域
- *
  */
 
 class ImageProcessor extends Component {
@@ -27,7 +26,20 @@ class ImageProcessor extends Component {
     const img = new Image();
     img.src = imgData;
     img.onload = function() {
-      context.drawImage(img, 0, 0);
+      let imgWidth = img.width; //获取图片的宽度
+      let imgHeight = img.height; //获取图片的高度
+      let targetWidth = canvas.width; //指定目标canvas区域的宽度
+      let targetHeight = (imgHeight * targetWidth) / imgWidth; //计算出目标canvas区域的高度
+      let leftWidth = (targetWidth - targetWidth / 2) / 2;
+      let topHeight = (canvas.height - targetHeight / 2) / 2;
+
+      context.drawImage(
+        img,
+        leftWidth,
+        topHeight,
+        targetWidth / 2,
+        targetHeight / 2
+      );
     };
   };
 
